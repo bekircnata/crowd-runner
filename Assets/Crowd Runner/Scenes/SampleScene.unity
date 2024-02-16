@@ -1507,6 +1507,7 @@ GameObject:
   - component: {fileID: 822247176}
   - component: {fileID: 822247175}
   - component: {fileID: 822247177}
+  - component: {fileID: 822247178}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1528,7 +1529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crowdSystem: {fileID: 822247177}
   roadWidth: 10
-  moveSpeed: 1
+  moveSpeed: 2
   slideSpeed: 6
 --- !u!4 &822247176
 Transform:
@@ -1560,8 +1561,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runnersParent: {fileID: 307894292}
+  runnerPrefab: {fileID: 1981144937618917008, guid: 8e5dbe917f380d746a797fffce594dc4, type: 3}
   radius: 0.4
   angle: 137.508
+--- !u!114 &822247178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822247174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d9500fee291a7449ec8a460f659dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crowdSystem: {fileID: 822247177}
 --- !u!4 &844675323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1168016143108447274, guid: 8e5dbe917f380d746a797fffce594dc4, type: 3}
@@ -1639,6 +1654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 947305551}
   - component: {fileID: 947305552}
+  - component: {fileID: 947305553}
   m_Layer: 0
   m_Name: Doors
   m_TagString: Untagged
@@ -1679,12 +1695,26 @@ MonoBehaviour:
   leftDoorRenderer: {fileID: 519035304}
   rightDoorText: {fileID: 143724536}
   leftDoorText: {fileID: 1211065752}
+  collider: {fileID: 947305553}
   rightDoorBonusType: 2
-  rightDoorBonusAmount: 8
+  rightDoorBonusAmount: 2
   leftDoorBonusType: 3
   leftDoorBonusAmount: 2
   bonusColor: {r: 0, g: 0.53380704, b: 1, a: 1}
   penaltyColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!65 &947305553
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947305550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 3, z: 0.4}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1001 &968284143
 PrefabInstance:
   m_ObjectHideFlags: 0
