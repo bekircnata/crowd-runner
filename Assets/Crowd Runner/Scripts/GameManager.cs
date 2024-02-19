@@ -36,5 +36,7 @@ public class GameManager : MonoBehaviour
     {
         this.gameState = gameState;
         onGameStateChanged?.Invoke(gameState);
+
+        Debug.Log("gameState change to: " + gameState);
     }
 }

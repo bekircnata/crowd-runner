@@ -1044,6 +1044,7 @@ GameObject:
   - component: {fileID: 822247175}
   - component: {fileID: 822247177}
   - component: {fileID: 822247178}
+  - component: {fileID: 822247179}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1064,6 +1065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crowdSystem: {fileID: 822247177}
+  playerAnimator: {fileID: 822247179}
   roadWidth: 10
   moveSpeed: 5
   slideSpeed: 6
@@ -1113,6 +1115,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crowdSystem: {fileID: 822247177}
+--- !u!114 &822247179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822247174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 206466b5ce6c6e44cb60f63f111d849d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runnersParent: {fileID: 307894292}
 --- !u!4 &844675323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1168016143108447274, guid: 8e5dbe917f380d746a797fffce594dc4, type: 3}
@@ -1320,7 +1335,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 969309890}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1728852528}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &969309890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1956,11 +1983,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307278626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.044609, y: -23.868217, z: 129.81517}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1196605863}
+  - {fileID: 1728852529}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2378,6 +2406,51 @@ MonoBehaviour:
   - {fileID: 3086102457871288527, guid: 5af91a7ec2dac394eae5d5c7f917276e, type: 3}
   - {fileID: 7173260971964711286, guid: 0c7eb24b11599b0478be079e737b238f, type: 3}
   - {fileID: 3086102457871288527, guid: 946a1271d6167c64dbaa41e7daea31c6, type: 3}
+--- !u!1 &1728852527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1728852529}
+  - component: {fileID: 1728852528}
+  m_Layer: 0
+  m_Name: UI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1728852528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728852527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3556731804c27e4db49c02b99934bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuPanel: {fileID: 1911186241}
+--- !u!4 &1728852529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728852527}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1307278627}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1739379684
 PrefabInstance:
   m_ObjectHideFlags: 0
