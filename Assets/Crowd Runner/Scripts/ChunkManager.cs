@@ -6,8 +6,7 @@ public class ChunkManager : MonoBehaviour
 {
     public static ChunkManager instance;
 
-    [SerializeField] private Chunk[] chunkPrefabs;
-    [SerializeField] private Chunk[] levelChunks;
+    [SerializeField] private LevelSO[] levels;
     private GameObject finishLine;
 
     private void Awake()
@@ -22,7 +21,7 @@ public class ChunkManager : MonoBehaviour
 
     void Start()
     {
-        CreateOrderedLevel();
+        GenerateLevel();
 
         finishLine = GameObject.FindWithTag("Finish");
     }
@@ -32,7 +31,18 @@ public class ChunkManager : MonoBehaviour
         
     }
 
-    private void CreateOrderedLevel()
+    private void GenerateLevel()
+    {
+        int currentLevel = GetLevel();
+
+        currentLevel = currentLevel % levels.Length;
+
+        LevelSO level = levels[currentLevel];
+
+        CreateLevel(level.chunks);
+    }
+
+    private void CreateLevel(Chunk[] levelChunks)
     {
         Vector3 chunkPosition = Vector3.zero;
 
@@ -44,26 +54,7 @@ public class ChunkManager : MonoBehaviour
             {
                 chunkPosition.z += chunkToCreate.GetLength() / 2;
             }
-            
-            Chunk chunkInstance = Instantiate(chunkToCreate, chunkPosition, Quaternion.identity, transform);
 
-            chunkPosition.z += chunkInstance.GetLength() / 2;
-        }
-    } 
-
-    private void CreateRandomLevel()
-    {
-       Vector3 chunkPosition = Vector3.zero;
-
-        for (int i = 0; i < 5; i++)
-        {
-            Chunk chunkToCreate = chunkPrefabs[Random.Range(0, chunkPrefabs.Length)];
-
-            if(i > 0)
-            {
-                chunkPosition.z += chunkToCreate.GetLength() / 2;
-            }
-            
             Chunk chunkInstance = Instantiate(chunkToCreate, chunkPosition, Quaternion.identity, transform);
 
             chunkPosition.z += chunkInstance.GetLength() / 2;
