@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class ChunkManager : MonoBehaviour
 {
+    public static ChunkManager instance;
+
     [SerializeField] private Chunk[] chunkPrefabs;
     [SerializeField] private Chunk[] levelChunks;
+    private GameObject finishLine;
+
+    private void Awake()
+    {
+        if(instance != null)
+        {
+            Destroy(gameObject);
+        }else {
+            instance = this;
+        }
+    }
 
     void Start()
     {
         CreateOrderedLevel();
+
+        finishLine = GameObject.FindWithTag("Finish");
     }
 
     void Update()
@@ -54,4 +69,10 @@ public class ChunkManager : MonoBehaviour
             chunkPosition.z += chunkInstance.GetLength() / 2;
         }
     }
+
+    public float GetFinishZ()
+    {
+        return finishLine.transform.position.z;
+    }
+
 }
