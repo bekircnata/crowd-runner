@@ -44,6 +44,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        GameManager.onGameStateChanged -= GameStateChangedCallback;
+    }
+
     private void GameStateChangedCallback(GameManager.GameState gameState)
     {
         if(gameState == GameManager.GameState.Game)

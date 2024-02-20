@@ -9,11 +9,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private Slider progressBar;
+    [SerializeField] private Text levelText;
 
     void Start()
     {
         progressBar.value = 0;
+
         gamePanel.SetActive(false);
+
+        levelText.text = "Level " + (ChunkManager.instance.GetLevel() + 1);
     }
 
     void Update()
