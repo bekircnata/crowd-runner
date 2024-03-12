@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class UIManager : MonoBehaviour
     [Header(" Elements ")]
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject gameoverPanel;
+
     [SerializeField] private Slider progressBar;
     [SerializeField] private Text levelText;
 
@@ -16,13 +19,29 @@ public class UIManager : MonoBehaviour
         progressBar.value = 0;
 
         gamePanel.SetActive(false);
+        gameoverPanel.SetActive(false);
 
         levelText.text = "Level " + (ChunkManager.instance.GetLevel() + 1);
+
+        GameManager.onGameStateChanged += GameStateChangedCallback;
+    }
+
+    void OnDestroy()
+    {
+        GameManager.onGameStateChanged -= GameStateChangedCallback;
     }
 
     void Update()
     {
         UpdateProgressBar();
+    }
+
+    private void GameStateChangedCallback(GameManager.GameState gameState)
+    {
+        if(gameState == GameManager.GameState.Gameover)
+        {
+            ShowGameoverPanel();
+        }
     }
 
     public void PlayButtonPressed()
@@ -31,6 +50,15 @@ public class UIManager : MonoBehaviour
 
         menuPanel.SetActive(false);
         gamePanel.SetActive(true);
+    }
+
+    public void RetryButtonPressed() {
+        SceneManager.LoadScene(0);
+    }
+
+    public void ShowGameoverPanel() {
+        gamePanel.SetActive(false);
+        gameoverPanel.SetActive(true);
     }
 
     public void UpdateProgressBar()
