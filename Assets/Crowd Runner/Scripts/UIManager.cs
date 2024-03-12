@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject gameoverPanel;
+    [SerializeField] private GameObject levelCompletePanel;
 
     [SerializeField] private Slider progressBar;
     [SerializeField] private Text levelText;
@@ -42,6 +43,10 @@ public class UIManager : MonoBehaviour
         {
             ShowGameoverPanel();
         }
+        else if(gameState == GameManager.GameState.LevelComplete)
+        {
+            ShowLevelCompletePanel();
+        }
     }
 
     public void PlayButtonPressed()
@@ -59,6 +64,12 @@ public class UIManager : MonoBehaviour
     public void ShowGameoverPanel() {
         gamePanel.SetActive(false);
         gameoverPanel.SetActive(true);
+    }
+
+    private void ShowLevelCompletePanel()
+    {
+        gamePanel.SetActive(false);
+        levelCompletePanel.SetActive(true);
     }
 
     public void UpdateProgressBar()

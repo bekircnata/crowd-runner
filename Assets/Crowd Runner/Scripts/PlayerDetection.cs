@@ -14,7 +14,10 @@ public class PlayerDetection : MonoBehaviour
 
     void Update()
     {
-        DetectDoors();
+        if(GameManager.instance.IsGameState())
+        {
+            DetectDoors();
+        }
     }
 
     private void DetectDoors()
@@ -38,7 +41,8 @@ public class PlayerDetection : MonoBehaviour
             {
                 PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
                 
-                SceneManager.LoadScene(0);
+                GameManager.instance.SetGameState(GameManager.GameState.LevelComplete);
+                //SceneManager.LoadScene(0);
             }
         }
     }
