@@ -34,8 +34,6 @@ public class PlayerDetection : MonoBehaviour
         {
             if(detectColliders[i].TryGetComponent(out Doors doors))
             {
-                Debug.Log("We hit some doors");
-
                 int bonusAmount = doors.GetBonusAmount(transform.position.x);
                 BonusType bonusType = doors.GetBonusType(transform.position.x);
 
