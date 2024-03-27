@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class CrowdSystem : MonoBehaviour
 {
+    [Header(" Elements ")]
     [SerializeField] private PlayerAnimator playerAnimator;
     [SerializeField] private Transform runnersParent;
     [SerializeField] private GameObject runnerPrefab;
+
+    [Header(" Settings ")]
     [SerializeField] private float radius;
     [SerializeField] private float angle;
 
@@ -92,9 +95,11 @@ public class CrowdSystem : MonoBehaviour
             amount = runnersAmount;
         }
 
+        
+
         for (int i = runnersAmount - 1; i >= runnersAmount - amount; i--)
         {
-            Transform runnerToDestroy = runnersParent.GetChild(1);
+            Transform runnerToDestroy = runnersParent.GetChild(i);
             runnerToDestroy.SetParent(null);
             Destroy(runnerToDestroy.gameObject);
         }
