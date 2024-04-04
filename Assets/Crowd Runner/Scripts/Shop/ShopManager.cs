@@ -20,7 +20,7 @@ public class ShopManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            UnlockedSkin(Random.Range(0, skinButtons.Length));
+            UnlockSkin(Random.Range(0, skinButtons.Length));
         }
 
         if(Input.GetKeyDown(KeyCode.D)) 
@@ -43,10 +43,16 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void UnlockedSkin(int skinIndex)
+    public void UnlockSkin(int skinIndex)
     {
         PlayerPrefs.SetInt("skinButton" + skinIndex, 1);
         skinButtons[skinIndex].Unlock();
+    }
+
+    private void UnlockSkin(SkinButton skinButton)
+    {
+        int skinIndex = skinButton.transform.GetSiblingIndex();
+        UnlockSkin(skinIndex);
     }
 
     private void SelectSkin(int skinIndex)
@@ -59,4 +65,30 @@ public class ShopManager : MonoBehaviour
                 skinButtons[i].Deselect();
         }
     }
+
+    public void PurchaseSkin()
+    {
+        List<SkinButton> skinButtonList = new List<SkinButton>();
+
+        for (int i = 0; i < skinButtons.Length; i++)
+        {
+            if(!skinButtons[i].IsUnlocked())
+            {
+                skinButtonList.Add(skinButtons[i]);
+            }
+        }
+
+        if(skinButtonList.Count <= 0)
+        {
+            return;
+        }
+
+        SkinButton randomSkinButton = skinButtonList[Random.Range(0, skinButtonList.Count)];
+
+        UnlockSkin(randomSkinButton);
+        SelectSkin(randomSkinButton.transform.GetSiblingIndex());
+
+    }
+
+
 }
