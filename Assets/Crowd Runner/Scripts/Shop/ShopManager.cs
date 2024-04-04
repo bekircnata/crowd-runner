@@ -18,19 +18,35 @@ public class ShopManager : MonoBehaviour
 
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            UnlockedSkin(Random.Range(0, skinButtons.Length));
+        }
+
+        if(Input.GetKeyDown(KeyCode.D)) 
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 
     private void ConfigureButtons()
     {
         for (int i = 0; i < skinButtons.Length; i++)
         {
-            skinButtons[i].Configure(skins[i], true);
+            bool unlocked = PlayerPrefs.GetInt("skinButton" + i) == 1;
+
+            skinButtons[i].Configure(skins[i], unlocked);
 
             int skinIndex = i;
 
             skinButtons[i].GetButton().onClick.AddListener(() => SelectSkin(skinIndex));
         }
+    }
+
+    public void UnlockedSkin(int skinIndex)
+    {
+        PlayerPrefs.SetInt("skinButton" + skinIndex, 1);
+        skinButtons[skinIndex].Unlock();
     }
 
     private void SelectSkin(int skinIndex)
