@@ -7,13 +7,24 @@ public class ShopManager : MonoBehaviour
 {
     [Header("Elements")]
     [SerializeField] private SkinButton[] skinButtons;
+    [SerializeField] private Button purchaseButton;
     
     [Header("Skins")]
     [SerializeField] private Sprite[] skins;
 
+    [Header("Pricing")]
+    [SerializeField] private int skinPrice;
+    [SerializeField] private Text priceText;
+
+    void Awake()
+    {
+        priceText.text = skinPrice.ToString();
+    }
+
     void Start()
     {
         ConfigureButtons();
+        UpdatePurchaseButton();
     }
 
     void Update()
@@ -88,6 +99,18 @@ public class ShopManager : MonoBehaviour
         UnlockSkin(randomSkinButton);
         SelectSkin(randomSkinButton.transform.GetSiblingIndex());
 
+        DataManager.instance.UseCoins(skinPrice);
+
+        UpdatePurchaseButton();
+
+    }
+
+    public void UpdatePurchaseButton()
+    {
+        if(DataManager.instance.GetCoins() < skinPrice)
+            purchaseButton.interactable = false;
+        else
+            purchaseButton.interactable = true;
     }
 
 

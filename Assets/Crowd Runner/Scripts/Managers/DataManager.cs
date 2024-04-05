@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviour
 
     void Start()
     {
-         UpdateCoinsTexs();
+        UpdateCoinsTexs();
     }
 
     void Update()
@@ -47,4 +47,19 @@ public class DataManager : MonoBehaviour
 
         PlayerPrefs.SetInt("coins", coins);
     }
+
+    public void UseCoins(int amount)
+    {
+        coins -= amount;
+
+        UpdateCoinsTexs();
+
+        PlayerPrefs.SetInt("coins", coins);
+    }
+
+    public int GetCoins()
+    {
+        return coins;
+    }
+
 }
