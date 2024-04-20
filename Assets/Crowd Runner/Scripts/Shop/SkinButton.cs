@@ -10,11 +10,14 @@ public class SkinButton : MonoBehaviour
     [SerializeField] private Image skinImage;
     [SerializeField] private GameObject lockImage;
     [SerializeField] private GameObject selector;
+    [SerializeField] private Transform runnersParent;
+    [SerializeField] private Transform runnersPrefab;
+
 
     private bool unlocked;
 
-    public void Configure(Sprite skinSprite, bool unlocked) {
-        skinImage.sprite = skinSprite;
+    public void Configure(Material skinSprite, bool unlocked) {
+        skinImage.material = skinSprite;
         this.unlocked = unlocked;
 
         if(unlocked)
@@ -42,6 +45,12 @@ public class SkinButton : MonoBehaviour
     public void Select()
     {
         selector.SetActive(true);
+        
+        for (int i = 0; i < runnersParent.childCount; i++)
+        {
+            runnersParent.GetChild(i).GetChild(0).gameObject.GetComponent<Renderer>().material = skinImage.material;
+            runnersPrefab.GetChild(0).gameObject.GetComponent<Renderer>().material = skinImage.material;
+        }
     }
 
     public void Deselect()

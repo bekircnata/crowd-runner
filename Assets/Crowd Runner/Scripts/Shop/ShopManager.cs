@@ -10,7 +10,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button purchaseButton;
     
     [Header("Skins")]
-    [SerializeField] private Sprite[] skins;
+    [SerializeField] private Material[] skins;
 
     [Header("Pricing")]
     [SerializeField] private int skinPrice;
