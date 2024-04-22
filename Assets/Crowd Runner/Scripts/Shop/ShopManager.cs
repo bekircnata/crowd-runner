@@ -18,6 +18,8 @@ public class ShopManager : MonoBehaviour
 
     void Awake()
     {
+        UnlockSkin(0);
+        
         priceText.text = skinPrice.ToString();
     }
 
@@ -29,15 +31,7 @@ public class ShopManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            UnlockSkin(Random.Range(0, skinButtons.Length));
-        }
 
-        if(Input.GetKeyDown(KeyCode.D)) 
-        {
-            PlayerPrefs.DeleteAll();
-        }
     }
 
     private void ConfigureButtons()
