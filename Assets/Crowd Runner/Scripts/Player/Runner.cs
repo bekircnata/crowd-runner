@@ -8,16 +8,6 @@ public class Runner : MonoBehaviour
 
     private bool isTarget;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void SetTarget()
     {
         isTarget = true;

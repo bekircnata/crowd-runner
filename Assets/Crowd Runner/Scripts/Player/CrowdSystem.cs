@@ -13,22 +13,15 @@ public class CrowdSystem : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] private float angle;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
-        if(!GameManager.instance.IsGameState())
-        {
+        if(!GameManager.instance.IsGameState()) {
             return;
         }
 
         PlaceRunners();
 
-        if(runnersParent.childCount <= 0)
-        {
+        if(runnersParent.childCount <= 0) {
             GameManager.instance.SetGameState(GameManager.GameState.Gameover);
         }
     }
@@ -78,8 +71,7 @@ public class CrowdSystem : MonoBehaviour
 
     private void AddRunners(int amount)
     {
-        for (int i = 0; i < amount; i++)
-        {
+        for (int i = 0; i < amount; i++) {
             Instantiate(runnerPrefab, runnersParent);
         }
 
@@ -90,15 +82,11 @@ public class CrowdSystem : MonoBehaviour
     {
         int runnersAmount = runnersParent.childCount;
 
-        if(amount > runnersAmount)
-        {
+        if(amount > runnersAmount) {
             amount = runnersAmount;
         }
 
-        
-
-        for (int i = runnersAmount - 1; i >= runnersAmount - amount; i--)
-        {
+        for (int i = runnersAmount - 1; i >= runnersAmount - amount; i--) {
             Transform runnerToDestroy = runnersParent.GetChild(i);
             runnerToDestroy.SetParent(null);
             Destroy(runnerToDestroy.gameObject);

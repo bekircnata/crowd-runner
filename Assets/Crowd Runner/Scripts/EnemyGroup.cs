@@ -18,19 +18,11 @@ public class EnemyGroup : MonoBehaviour
         GenerateEnemies();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void GenerateEnemies() 
     {
-        for (int i = 0; i < amount; i++ )
-        {
+        for (int i = 0; i < amount; i++ ) {
             Vector3 enemyLocalPosition = GetEnemyLocalPosition(i);
-
             Vector3 enemyWorldPoaition = enemiesParent.TransformPoint(enemyLocalPosition);
-
             Instantiate(enemyPrefab, enemyWorldPoaition, Quaternion.identity, enemiesParent);
         }
     }

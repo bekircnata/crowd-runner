@@ -8,13 +8,6 @@ public class CrowdCounter : MonoBehaviour
     [SerializeField] private TextMeshPro crowdCounterText;
     [SerializeField] private Transform runnersParent;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         crowdCounterText.text = runnersParent.childCount.ToString();

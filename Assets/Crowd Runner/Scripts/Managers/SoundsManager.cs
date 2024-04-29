@@ -25,19 +25,11 @@ public class SoundsManager : MonoBehaviour
         Enemy.onRunnerDied -= PlayRunnerDieDound;
     }
 
-    void Update()
-    {
-        
-    }
-
     private void GameStateChangedCallBack(GameManager.GameState gameState)
     {
-        if(gameState == GameManager.GameState.LevelComplete)
-        {
+        if(gameState == GameManager.GameState.LevelComplete) {
             levelCompleteSound.Play();
-        }
-        else if(gameState == GameManager.GameState.Gameover)
-        {
+        } else if(gameState == GameManager.GameState.Gameover) {
             gameoverSound.Play();
         }
     }

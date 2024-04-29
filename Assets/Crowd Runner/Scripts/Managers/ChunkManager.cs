@@ -26,15 +26,9 @@ public class ChunkManager : MonoBehaviour
         finishLine = GameObject.FindWithTag("Finish");
     }
 
-    void Update()
-    {
-        
-    }
-
     private void GenerateLevel()
     {
         int currentLevel = GetLevel();
-
         currentLevel = currentLevel % levels.Length;
 
         LevelSO level = levels[currentLevel];
@@ -65,7 +59,7 @@ public class ChunkManager : MonoBehaviour
     {
         return finishLine.transform.position.z;
     }
-
+ 
     public int GetLevel()
     {
         return PlayerPrefs.GetInt("level", 0);

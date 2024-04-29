@@ -29,21 +29,13 @@ public class ShopManager : MonoBehaviour
         UpdatePurchaseButton();
     }
 
-    void Update()
-    {
-
-    }
-
     private void ConfigureButtons()
     {
-        for (int i = 0; i < skinButtons.Length; i++)
-        {
+        for (int i = 0; i < skinButtons.Length; i++) {
             bool unlocked = PlayerPrefs.GetInt("skinButton" + i) == 1;
-
             skinButtons[i].Configure(skins[i], unlocked);
 
             int skinIndex = i;
-
             skinButtons[i].GetButton().onClick.AddListener(() => SelectSkin(skinIndex));
         }
     }
@@ -62,12 +54,12 @@ public class ShopManager : MonoBehaviour
 
     private void SelectSkin(int skinIndex)
     {
-        for (int i = 0; i < skinButtons.Length; i++)
-        {
-            if(skinIndex == i)
+        for (int i = 0; i < skinButtons.Length; i++) {
+            if(skinIndex == i) {
                 skinButtons[i].Select();
-            else
+            } else {
                 skinButtons[i].Deselect();
+            }
         }
     }
 
@@ -75,21 +67,17 @@ public class ShopManager : MonoBehaviour
     {
         List<SkinButton> skinButtonList = new List<SkinButton>();
 
-        for (int i = 0; i < skinButtons.Length; i++)
-        {
-            if(!skinButtons[i].IsUnlocked())
-            {
+        for (int i = 0; i < skinButtons.Length; i++) {
+            if(!skinButtons[i].IsUnlocked()) {
                 skinButtonList.Add(skinButtons[i]);
             }
         }
 
-        if(skinButtonList.Count <= 0)
-        {
+        if(skinButtonList.Count <= 0) {
             return;
         }
 
         SkinButton randomSkinButton = skinButtonList[Random.Range(0, skinButtonList.Count)];
-
         UnlockSkin(randomSkinButton);
         SelectSkin(randomSkinButton.transform.GetSiblingIndex());
 
@@ -101,11 +89,11 @@ public class ShopManager : MonoBehaviour
 
     public void UpdatePurchaseButton()
     {
-        if(DataManager.instance.GetCoins() < skinPrice)
+        if(DataManager.instance.GetCoins() < skinPrice) {
             purchaseButton.interactable = false;
-        else
+        } else {
             purchaseButton.interactable = true;
+        }
     }
-
 
 }

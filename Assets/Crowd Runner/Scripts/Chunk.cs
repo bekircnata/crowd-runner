@@ -7,18 +7,6 @@ public class Chunk : MonoBehaviour
 {
     [SerializeField] private Vector3 size;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public float GetLength()
     {
         return size.z;

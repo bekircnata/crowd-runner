@@ -29,11 +29,6 @@ public class Doors : MonoBehaviour
         ConfigureDoors();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void ConfigureDoors()
     {
         // Configure the right door
@@ -81,22 +76,18 @@ public class Doors : MonoBehaviour
 
     public int GetBonusAmount(float xPosition)
     {
-        if(xPosition > 0)
-        {
+        if(xPosition > 0) {
             return rightDoorBonusAmount;
-        }else 
-        {
+        } else {
             return leftDoorBonusAmount;
         }
     }
 
     public BonusType GetBonusType(float xPosition)
     {
-        if(xPosition > 0)
-        {
+        if(xPosition > 0) {
             return rightDoorBonusType;
-        }else 
-        {
+        } else  {
             return leftDoorBonusType;
         }
     }

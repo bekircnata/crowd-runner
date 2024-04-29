@@ -27,59 +27,54 @@ public class SettingsManager : MonoBehaviour
         Setup();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void Setup()
     {
-        if(soundsState)
+        if(soundsState) {
            EnableSounds();
-        else 
+        } else {
             DisableSounds();
+        }
 
-        if(hapticsState)
+        if(hapticsState) {
             EnableHaptics();
-        else
+        } else {
             DisableHaptics();
+        }
     }
 
     public void ChangeSoundsState()
     {
-        if(soundsState)
+        if(soundsState) {
             DisableSounds();
-        else 
+        } else {
             EnableSounds();
+        } 
 
         soundsState = !soundsState;
-
         PlayerPrefs.SetInt("sounds", soundsState ? 1 : 0);
     }
 
     private void DisableSounds()
     {
         soundsManager.DisableSounds();
-
         soundsButtonImage.sprite = optionsOffSprite;
     }
 
     private void EnableSounds()
     {
         soundsManager.EnableSounds();
-
         soundsButtonImage.sprite = optionsOnSprite;
     }
 
     public void ChangeHapticsState()
     {
-        if(hapticsState)
+        if(hapticsState) {
             DisableHaptics();
-        else 
+        } else {
             EnableHaptics();
+        }
 
         hapticsState = !hapticsState;
-
         PlayerPrefs.SetInt("haptics", hapticsState ? 1 : 0);
     }
 

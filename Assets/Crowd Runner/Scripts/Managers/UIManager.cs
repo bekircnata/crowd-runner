@@ -22,12 +22,12 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        progressBar.value = 0;
-
         gamePanel.SetActive(false);
         gameoverPanel.SetActive(false);
         settingsPanel.SetActive(false);
         HideShop();
+
+        progressBar.value = 0;
 
         levelText.text = "Level " + (ChunkManager.instance.GetLevel() + 1);
 
@@ -46,12 +46,9 @@ public class UIManager : MonoBehaviour
 
     private void GameStateChangedCallback(GameManager.GameState gameState)
     {
-        if(gameState == GameManager.GameState.Gameover)
-        {
+        if(gameState == GameManager.GameState.Gameover) {
             ShowGameoverPanel();
-        }
-        else if(gameState == GameManager.GameState.LevelComplete)
-        {
+        } else if(gameState == GameManager.GameState.LevelComplete) {
             ShowLevelCompletePanel();
         }
     }
@@ -64,11 +61,14 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(true);
     }
 
-    public void RetryButtonPressed() {
+    public void RetryButtonPressed() 
+    {
+        // TO DO: Bulunulan level tekrar oynatılmalı.
         SceneManager.LoadScene(0);
     }
 
-    public void ShowGameoverPanel() {
+    public void ShowGameoverPanel() 
+    {
         gamePanel.SetActive(false);
         gameoverPanel.SetActive(true);
     }
@@ -81,8 +81,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateProgressBar()
     {
-        if(!GameManager.instance.IsGameState())
-        {
+        if(!GameManager.instance.IsGameState()) {
             return;
         }
 
@@ -110,4 +109,5 @@ public class UIManager : MonoBehaviour
     {
         shopPanel.SetActive(false);
     }
+    
 }

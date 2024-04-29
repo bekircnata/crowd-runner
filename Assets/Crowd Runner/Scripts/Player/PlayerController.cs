@@ -20,12 +20,10 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if(instance != null)
-        {
+        if(instance != null) {
             Destroy(gameObject);
         }
-        else
-        {
+        else {
             instance = this;
         }
     }
@@ -37,8 +35,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(canMove)
-        {
+        if(canMove) {
             MoveForward();
             ManageControl();
         }
@@ -51,12 +48,10 @@ public class PlayerController : MonoBehaviour
 
     private void GameStateChangedCallback(GameManager.GameState gameState)
     {
-        if(gameState == GameManager.GameState.Game)
-        {
+        if(gameState == GameManager.GameState.Game) {
             StartMoving();
         }
-        else if(gameState == GameManager.GameState.Gameover || gameState == GameManager.GameState.LevelComplete)
-        {
+        else if(gameState == GameManager.GameState.Gameover || gameState == GameManager.GameState.LevelComplete) {
             StopMoving();
         }
     }
@@ -80,25 +75,18 @@ public class PlayerController : MonoBehaviour
 
     private void ManageControl()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
+        if(Input.GetMouseButtonDown(0)) {
             clickedScreenPosition = Input.mousePosition;
             clickedPlayerPosition = transform.position;
-        }else if(Input.GetMouseButton(0))
-        {
+        } else if(Input.GetMouseButton(0)) {
             float xScreenDifference = Input.mousePosition.x - clickedScreenPosition.x;
             xScreenDifference /= Screen.width;
             xScreenDifference *= slideSpeed;
 
             Vector3 position = transform.position;
             position.x = clickedPlayerPosition.x + xScreenDifference;
-
             position.x = Mathf.Clamp(position.x, -roadWidth / 2 + crowdSystem.GetCrowdRadius(), roadWidth / 2 - crowdSystem.GetCrowdRadius() );
-
-            transform.position = position;
-
-            //transform.position = clickedPlayerPosition + Vector3.right * xScreenDifference;
-            
+            transform.position = position;            
         }
     }
 }

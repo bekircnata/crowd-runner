@@ -22,15 +22,6 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void SetGameState(GameState gameState)
     {

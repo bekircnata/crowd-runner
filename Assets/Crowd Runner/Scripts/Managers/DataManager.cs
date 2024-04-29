@@ -14,9 +14,13 @@ public class DataManager : MonoBehaviour
     void Awake()
     {
         if(instance != null)
+        {
             Destroy(gameObject);
+        }
         else
+        {
             instance = this;
+        }
             
         coins = PlayerPrefs.GetInt("coins", 0);
     }
@@ -24,11 +28,6 @@ public class DataManager : MonoBehaviour
     void Start()
     {
         UpdateCoinsTexs();
-    }
-
-    void Update()
-    {
-        
     }
 
     private void UpdateCoinsTexs()

@@ -16,14 +16,16 @@ public class SkinButton : MonoBehaviour
 
     private bool unlocked;
 
-    public void Configure(Material skinSprite, bool unlocked) {
+    public void Configure(Material skinSprite, bool unlocked) 
+    {
         skinImage.material = skinSprite;
         this.unlocked = unlocked;
 
-        if(unlocked)
+        if(unlocked) {
             Unlock();
-        else
+        } else {
             Lock();
+        }
     }
 
     public void Unlock()
@@ -46,8 +48,7 @@ public class SkinButton : MonoBehaviour
     {
         selector.SetActive(true);
         
-        for (int i = 0; i < runnersParent.childCount; i++)
-        {
+        for (int i = 0; i < runnersParent.childCount; i++) {
             runnersParent.GetChild(i).GetChild(0).gameObject.GetComponent<Renderer>().material = skinImage.material;
             runnersPrefab.GetChild(0).gameObject.GetComponent<Renderer>().material = skinImage.material;
         }
@@ -67,4 +68,5 @@ public class SkinButton : MonoBehaviour
     {
         return unlocked;
     }
+    
 }
